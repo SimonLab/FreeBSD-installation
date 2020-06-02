@@ -92,3 +92,27 @@ Update the system with `freebsd-update fetch` then `freebsd-update install`
 
 - restart with `shutdown -r now`
 - you can also use `pkg update`
+
+## Install xfce Desktop environment
+ref: https://www.youtube.com/watch?v=BgrcwCJA2lU
+
+- install xorg: `pkg install xorg` implementation of X Window System
+- install xfce: `pkg install xfce` desktop environment
+- install  sddm `pgk install sddm` display/login manager
+
+- edit /etc/rc.conf and add:
+
+ ```
+dbus_enable="YES" # https://en.wikipedia.org/wiki/D-Bus
+hald_enable="YES" # hardware abstraction layer https://en.wikipedia.org/wiki/Hardware_abstraction
+sddm_enable="YES"
+
+
+edit/create the .xinitrc on the user home directory and add, see https://www.freebsd.org/doc/handbook/x11-wm.html
+
+```
+exec startxfce4
+```
+
+Reboot: `su` then `shutdown -r now` and you should be able to login into xfce.
+
